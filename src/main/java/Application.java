@@ -1,15 +1,16 @@
 public class Application {
     public static void main(String[] args) {
         double start, end, h, fl, fr, fc, f2;
-        start = 6; // начальная точка
-        end = 7; // конечная точка
+        start = -1; // начальная точка
+        end = 0; // конечная точка
         h = 0.2; // шаг, с которым вычисляем производную
         // приближенно вычисляем первую производную различными способами
-        System.out.print("|Число  || Левая производная  ||Правая производная  ||Центральная производная||Вторая производная||");
+        System.out.print("|Число  ||Значение функции       || Левая производная  ||Правая производная  ||Центральная производ||Вторая производная||");
         System.out.println();
         for (double i = start; i <= end; i += h) {
             i = Round(i);
             System.out.print("| " + i + "  |");
+            System.out.print("| " + CalcExpression(i) + "   |");
             {
                 if (i != start) {
                     fl = (CalcExpression(i) - CalcExpression(i - h)) / h; // левая
@@ -20,7 +21,7 @@ public class Application {
                     System.out.print("| " + fr + " |");
                 } else System.out.print("|                    |");
                 if (i == start || i == end) {
-                    System.out.print("|                    ||                || ");
+                    System.out.print("|                    ||                    || ");
                 } else {
                     fc = (CalcExpression(i + h) - CalcExpression(i - h)) / (2 * h); // центральная
                     System.out.print("| " + fc + " |");
